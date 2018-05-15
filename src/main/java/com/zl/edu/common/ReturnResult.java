@@ -10,9 +10,12 @@ import java.io.Serializable;
  */
 @JsonSerialize(include =  JsonSerialize.Inclusion.NON_NULL)
 public class ReturnResult implements Serializable {
-    public int code;
+    public int code;//0:失败，1，成功
     public String msg;
     public Object data;
+
+    public ReturnResult() {
+    }
 
     public ReturnResult(int code, String msg, Object data) {
         this.code = code;

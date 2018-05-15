@@ -45,7 +45,6 @@ public class BackendUserController extends BaseBackendController {
     @PostMapping(value = "/adduser")
     @ResponseBody
     public ReturnResult addUser(@Valid AddUserForm userForm, BindingResult result){
-
         return adminUserService.saveAdminUser(userForm);
     }
 

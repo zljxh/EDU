@@ -35,7 +35,7 @@ public class BackendAddCoursePageController extends BaseBackendController {
     }
 
 
-    //¿Î³ÌÍ·²¿ÃèÊö£¬ÒÔ¼°ÄÚÈİÇøÃèÊö
+    //ï¿½Î³ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     @PostMapping("/savecourse")
     @ResponseBody
     public ReturnResult savecourse(
@@ -55,7 +55,7 @@ public class BackendAddCoursePageController extends BaseBackendController {
     }
 
 
-    //¿Î³ÌÄ¿Â¼
+    //ï¿½Î³ï¿½Ä¿Â¼
     @PostMapping("/savechapter")
     @ResponseBody
     public ReturnResult saveCourseChapter(@RequestBody CourseChapterForm courseChapterForm) {
