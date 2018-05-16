@@ -34,7 +34,6 @@ public interface SysMenuMapper {
             "  s.title,\n" +
             "  s.createtime,\n" +
             "  s.path,\n" +
-            "  UNIX_TIMESTAMP(s.createtime) AS createtimes,\n" +
             "  (\n" +
             "    CASE\n" +
             "      WHEN s.isparentid = 1 \n" +

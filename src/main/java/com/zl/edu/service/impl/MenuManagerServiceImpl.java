@@ -5,6 +5,7 @@ import com.zl.edu.dao.mapper.SysMenuMapper;
 import com.zl.edu.service.MenuManagerService;
 import com.zl.edu.dao.entity.SysMenu;
 import com.zl.edu.service.entity.MenuAddEnitityForm;
+import com.zl.edu.util.DateUtil;
 import com.zl.edu.util.KeyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,14 @@ public class MenuManagerServiceImpl implements MenuManagerService {
 
     @Override
     public List<SysMenu> getAllMenus() {
-        return sysMenuMapper.getAllMenus();
+        List<SysMenu> menus=sysMenuMapper.getAllMenus();
+        for (SysMenu menu:menus){
+            if (menu.getIsparentid()==1){
+                menu.setParenttitle("子类("+menu.getParenttitle()+")");
+            }
+            menu.setCreatetimes(DateUtil.dateToString(menu.getCreatetime(),"yyyy-MM-dd HH:mm"));
+        }
+        return menus;
     }
 
     @Override
