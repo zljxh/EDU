@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface MenuManagerService {
     public List<SysMenu> getAllParentMenu();
+    public List<SysMenu> getAllMenus();
 
     public ReturnResult save(MenuAddEnitityForm menuadd);
+
+    public ReturnResult delete(Long id);
 }

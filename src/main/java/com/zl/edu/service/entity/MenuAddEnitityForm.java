@@ -3,6 +3,10 @@ package com.zl.edu.service.entity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class MenuAddEnitityForm {
+
+
+
+
     private Long parentid;
     private Integer isparentid;
     @NotEmpty(message = "菜单名称不能为空")

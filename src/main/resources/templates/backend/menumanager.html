@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8"/>
 <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
@@ -46,37 +46,49 @@
 			<thead>
 				<tr class="text-c">
 					<th width="25"><input type="checkbox" name="" value=""/></th>
-					<th width="80">ID</th>
-					<th width="80">排序</th>
-					<th>栏目名称</th>
+					<th>ID</th>
+					<th>菜单类型</th>
+					<th>菜单名称</th>
+					<th>菜单url</th>
+					<th>创建时间</th>
 					<th width="100">操作</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="text-c">
-					<td><input type="checkbox" name="" value=""/></td>
-					<td>1</td>
-					<td>1</td>
-					<td class="text-l">一级栏目</td>
-					<td class="f-14"><a title="编辑" href="javascript:;" onclick="system_category_edit('栏目编辑','system-category-add.html','1','700','480')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-						<a title="删除" href="javascript:;" onclick="system_category_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-				</tr>
-				<tr class="text-c">
-					<td><input type="checkbox" name="" value=""/></td>
-					<td>2</td>
-					<td>2</td>
-					<td class="text-l">&nbsp;&nbsp;├&nbsp;二级栏目</td>
-					<td class="f-14"><a title="编辑" href="javascript:;" onclick="system_category_edit('栏目编辑','system-category-add.html','2','700','480')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-						<a title="删除" href="javascript:;" onclick="system_category_del(this,'2')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-				</tr>
-				<tr class="text-c">
-					<td><input type="checkbox" name="" value=""/></td>
-					<td>3</td>
-					<td>3</td>
-					<td class="text-l">&nbsp;&nbsp;├&nbsp;二级栏目</td>
-					<td class="f-14"><a title="编辑" href="javascript:;" onclick="system_category_edit('栏目编辑','system-category-add.html','3','700','480')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-						<a title="删除" href="javascript:;" onclick="system_category_del(this,'3')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-				</tr>
+			<tr class="text-c" th:each="item :${menus}">
+				<td><input type="checkbox" name="" value=""/></td>
+				<td th:text="${item.cateid}"></td>
+				<td th:text="${item.parenttitle}"></td>
+				<td th:text="${item.title}"></td>
+				<td th:text="${item.path}"></td>
+				<td th:text="${item.createtimes}"></td>
+				<td class="f-14"><a title="编辑" href="javascript:;" onclick="system_category_edit('栏目编辑','system-category-add.html','2','700','480')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+				<a title="删除" href="javascript:;" onclick="system_category_del(this,'2')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+			</tr>
+				<!--<tr class="text-c" >-->
+					<!--<td><input type="checkbox" name="" value=""/></td>-->
+					<!--<td>1</td>-->
+					<!--<td>1</td>-->
+					<!--<td class="text-l">一级栏目</td>-->
+					<!--<td class="f-14"><a title="编辑" href="javascript:;" onclick="system_category_edit('栏目编辑','system-category-add.html','1','700','480')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>-->
+						<!--<a title="删除" href="javascript:;" onclick="system_category_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>-->
+				<!--</tr>-->
+				<!--<tr class="text-c">-->
+					<!--<td><input type="checkbox" name="" value=""/></td>-->
+					<!--<td>2</td>-->
+					<!--<td>2</td>-->
+					<!--<td class="text-l">&nbsp;&nbsp;├&nbsp;二级栏目</td>-->
+					<!--<td class="f-14"><a title="编辑" href="javascript:;" onclick="system_category_edit('栏目编辑','system-category-add.html','2','700','480')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>-->
+						<!--<a title="删除" href="javascript:;" onclick="system_category_del(this,'2')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>-->
+				<!--</tr>-->
+				<!--<tr class="text-c">-->
+					<!--<td><input type="checkbox" name="" value=""/></td>-->
+					<!--<td>3</td>-->
+					<!--<td>3</td>-->
+					<!--<td class="text-l">&nbsp;&nbsp;├&nbsp;二级栏目</td>-->
+					<!--<td class="f-14"><a title="编辑" href="javascript:;" onclick="system_category_edit('栏目编辑','system-category-add.html','3','700','480')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>-->
+						<!--<a title="删除" href="javascript:;" onclick="system_category_del(this,'3')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>-->
+				<!--</tr>-->
 			</tbody>
 		</table>
 	</div>

@@ -19,6 +19,11 @@ public class SysMenu {
 
     private String path;
 
+    private Integer validate;//是否有效,1有效，0无效
+
+    private String parenttitle;
+    private String createtimes;
+
     public Long getCateid() {
         return cateid;
     }
@@ -81,5 +86,29 @@ public class SysMenu {
 
     public void setPath(String path) {
         this.path = path == null ? null : path.trim();
+    }
+
+    public Integer getValidate() {
+        return validate;
+    }
+
+    public void setValidate(Integer validate) {
+        this.validate = validate;
+    }
+
+    public String getParenttitle() {
+        return parenttitle;
+    }
+
+    public void setParenttitle(String parenttitle) {
+        this.parenttitle = parenttitle;
+    }
+
+    public String getCreatetimes() {
+        return createtimes;
+    }
+
+    public void setCreatetimes(String createtimes) {
+        this.createtimes = createtimes;
     }
 }

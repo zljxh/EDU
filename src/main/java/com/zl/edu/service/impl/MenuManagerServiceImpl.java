@@ -24,10 +24,15 @@ public class MenuManagerServiceImpl implements MenuManagerService {
     }
 
     @Override
+    public List<SysMenu> getAllMenus() {
+        return sysMenuMapper.getAllMenus();
+    }
+
+    @Override
     public ReturnResult save(MenuAddEnitityForm menuadd) {
         ReturnResult result = new ReturnResult(0, "提交失败");
         if (sysMenuMapper.getMenuByTitleAndPath(menuadd.getTitle(), menuadd.getPath()).size() > 0) {
-            result.setMsg("改菜单已存在");
+            result.setMsg("该菜单已存在");
             return result;
         }
         SysMenu menu = new SysMenu();
@@ -39,15 +44,26 @@ public class MenuManagerServiceImpl implements MenuManagerService {
             menu.setParentid(menuadd.getParentid());
         }
         menu.setCateid(id);
-        menu.setIsparentid(menu.getIsparentid());
+        menu.setIsparentid(menuadd.getIsparentid());
         menu.setCreatetime(new Date());
         menu.setUpdatetime(new Date());
-        menu.setPath(menu.getPath());
-        menu.setTitle(menu.getTitle());
+        menu.setPath(menuadd.getPath());
+        menu.setTitle(menuadd.getTitle());
+        menu.setValidate(1);
         menu.setSortorder(0);
         if (sysMenuMapper.save(menu) == 1) {
             result.setCode(1);
             result.setMsg("提交成功");
+        }
+        return result;
+    }
+
+    @Override
+    public ReturnResult delete(Long id) {
+        ReturnResult result = new ReturnResult(0, "删除失败");
+        if (sysMenuMapper.delete(id) == 1) {
+            result.setMsg("删除成功");
+            result.setCode(1);
         }
         return result;
     }

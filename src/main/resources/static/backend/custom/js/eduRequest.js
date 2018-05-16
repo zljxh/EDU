@@ -68,7 +68,7 @@ function doRequestWithOutForm(url, jsonData, callback, failBack) {
 
         success: function (data) {
 
-            if (data.Success) {
+            if (data.code) {
                 if (!isUndefinedOrNull(callback)) {
                     callback(data);
                 }
@@ -82,12 +82,12 @@ function doRequestWithOutForm(url, jsonData, callback, failBack) {
             if (!isUndefinedOrNull(failBack)) {
                 failBack(data);
             } else {
-                alert(data.Message);
+                alert(data.msg);
             }
             submitFlag = false;
         },
         error: function (data) {
-            if (!data.Success) {
+            if (!data.code) {
                 alert("通讯出错，请稍后重试");
             }
             if (!isUndefinedOrNull(failBack)) {
