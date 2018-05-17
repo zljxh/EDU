@@ -145,12 +145,13 @@
 
         $("#submit").click(function () {
             var callback = function (data) {
-                alert(data.msg);
-
+                // alert(data.msg);
+                layer.msg(data.msg, {icon: 1, time: 1000});
             }
 
             var failBack = function (data) {
-                alert(data.msg);
+                // alert(data.msg);
+                layer.msg(data.msg, {icon: 1, time: 1000});
             }
 
             var params = {};

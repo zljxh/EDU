@@ -24,7 +24,7 @@ public interface SysMenuMapper {
             "      #{updatetime,jdbcType=TIMESTAMP}, #{path,jdbcType=VARCHAR},#{validate,jdbcType=INTEGER})")
     int save(SysMenu sysMenu);
 
-    @Delete("update set sys_menu validate=0 where cateid=#{id}")
+    @Delete("update sys_menu set  validate=0 where cateid=#{id}")
     int delete(@Param("id") long cateid);
 
     @Select("SELECT \n" +

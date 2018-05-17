@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.zl.edu.dao.mapper")
 public class EduApplication {
 
-	public static void main(String[] args) {
+	public static void main(String [] args) {
 		SpringApplication.run(EduApplication.class, args);
 	}
 }

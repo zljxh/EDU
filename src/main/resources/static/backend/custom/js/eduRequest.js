@@ -98,6 +98,57 @@ function doRequestWithOutForm(url, jsonData, callback, failBack) {
 };
 
 
+/**
+ * delete 方法
+ * @param url
+ * @param jsonData
+ * @param callback
+ * @param failBack
+ */
+function deRequestDelete(url,jsonData,callback, failBack) {
+    $.ajax({
+        async: true,
+        type: "delete",
+        url: url,
+        contentType: "application/json",
+        data: JSON.stringify(jsonData),//JSON.stringify(jsonData),
+        dataType: 'json',
+        scriptCharset: 'utf-8',
+        accepts : {
+            json : "application/json"
+        },
+
+        success: function (data) {
+
+            if (data.code) {
+                if (!isUndefinedOrNull(callback)) {
+                    callback(data);
+                }
+
+                return;
+            }
+            submitFlag = false;
+            this.error(data);
+        },
+        fail: function (data) {
+            if (!isUndefinedOrNull(failBack)) {
+                failBack(data);
+            } else {
+                alert(data.msg);
+            }
+            submitFlag = false;
+        },
+        error: function (data) {
+            if (!data.code) {
+                alert("通讯出错，请稍后重试");
+            }
+            if (!isUndefinedOrNull(failBack)) {
+                failBack(data);
+            }
+        }
+    });
+};
+
 
 function isUndefinedOrNull(obj) {
     if (obj == undefined || obj == null) {
