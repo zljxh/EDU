@@ -21,18 +21,19 @@ public class BackendMenuManagerController extends BaseBackendController {
 
     @GetMapping("/menumanager")
     public String menumanager(Model model) {
-        List<SysMenu> menus=menuManagerService.getAllMenus();
-        model.addAttribute("menus",menus);
+        List<SysMenu> menus = menuManagerService.getAllMenus();
+        model.addAttribute("menus", menus);
         return PAGE_PREFIX + "menumanager";
     }
 
     @GetMapping("/menuadd")
     public String menuadd(Model model) {
         List<SysMenu> menus = menuManagerService.getAllParentMenu();
-        model.addAttribute("parentMenus",menus);
+        model.addAttribute("parentMenus", menus);
         return PAGE_PREFIX + "menuadd";
     }
 
+    //增加菜单
     @PostMapping("/menuadd")
     @ResponseBody
     public ReturnResult menuadd(@RequestBody @Valid MenuAddEnitityForm menuadd, BindingResult result) {
@@ -43,9 +44,22 @@ public class BackendMenuManagerController extends BaseBackendController {
         return menuManagerService.save(menuadd);
     }
 
+    //删除菜单
     @DeleteMapping("/menudelete/{id}")
     @ResponseBody
-    public ReturnResult menudelete(@PathVariable long id){
-       return menuManagerService.delete(id);
+    public ReturnResult menudelete(@PathVariable long id) {
+        return menuManagerService.delete(id);
+    }
+
+    @GetMapping("/menuput")
+    public String menuput() {
+        return PAGE_PREFIX + "menuput";
+    }
+
+    //更新菜单
+    @PutMapping("/menuput")
+    @ResponseBody
+    public ReturnResult menuUpdate(@RequestBody @Valid MenuAddEnitityForm menuadd, BindingResult result) {
+        return null;
     }
 }
