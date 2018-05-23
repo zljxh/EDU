@@ -4,6 +4,7 @@ import com.zl.edu.common.ReturnResult;
 import com.zl.edu.dao.entity.SysMenu;
 import com.zl.edu.service.MenuManagerService;
 import com.zl.edu.service.entity.MenuAddEnitityForm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/backend")
+@Slf4j
 public class BackendMenuManagerController extends BaseBackendController {
     @Autowired
     private MenuManagerService menuManagerService;
@@ -51,8 +53,11 @@ public class BackendMenuManagerController extends BaseBackendController {
         return menuManagerService.delete(id);
     }
 
-    @GetMapping("/menuput")
-    public String menuput() {
+    @GetMapping("/menuput/{id}")
+    public String menuput(@PathVariable long id,Model model) {
+        log.info("menuput cateid" + id);
+        List<SysMenu> menus = menuManagerService.getAllParentMenu();
+        model.addAttribute("parentMenus", menus);
         return PAGE_PREFIX + "menuput";
     }
 

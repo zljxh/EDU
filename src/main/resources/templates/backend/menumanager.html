@@ -66,7 +66,7 @@
                 <td th:text="${item.path}"></td>
                 <td th:text="${item.createtimes}"></td>
                 <td class="f-14"><a title="编辑" href="javascript:;"
-                                    onclick="system_category_edit('菜单编辑','menuput','2','700','480')"
+                                    onclick="system_category_edit(this,'菜单编辑','menuput','2','700','480')"
                                     style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
                     <a title="删除" href="javascript:;" onclick="system_category_del(this,'${item.cateid}')" class="ml-5"
                        style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
@@ -104,8 +104,9 @@
     }
 
     /*系统-栏目-编辑*/
-    function system_category_edit(title, url, id, w, h) {
-        layer_show(title, url, w, h);
+    function system_category_edit(obj,title, url, id, w, h) {
+        var cateid = $(obj).parents("tr").children("td").eq(1).text();
+        layer_show(title, url+"/"+cateid, w, h);
     }
 
     /*系统-栏目-删除*/

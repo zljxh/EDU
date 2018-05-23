@@ -133,14 +133,14 @@
         });
 
         $("#menuType").change(function () {
-           var p=$(this).children("option:selected").val();
-           if (p==1){
-               menuType=1;
-             $("#parent").css("display","block");
-           }else {
-               menuType=0;
-               $("#parent").css("display","none");
-           }
+            var p=$(this).children("option:selected").val();
+            if (p==1){
+                menuType=1;
+                $("#parent").css("display","block");
+            }else {
+                menuType=0;
+                $("#parent").css("display","none");
+            }
         });
 
         $("#submit").click(function () {
